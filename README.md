@@ -70,7 +70,7 @@ Special thanks to the open-source community:
 - [Gradio](https://gradio.app/) for the elegant frontend framework.
 - [秋葉aaaki](https://space.bilibili.com/12566101) for the extremely optimized portable Windows runtime environment.
 
-All Models：
+All Models used：
 - [unsloth/FLUX.2-klein-9B-gguf](https://huggingface.co/unsloth/FLUX.2-klein-9B-GGUF)
 - [QuantStack/Wan2.2-I2V-A14B-GGUF](https://huggingface.co/QuantStack/Wan2.2-I2V-A14B-GGUF)
 - [unsloth/LTX-2.3-GGUF](https://huggingface.co/unsloth/LTX-2.3-GGUF/tree/main)
