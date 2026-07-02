@@ -1,0 +1,69 @@
+[简体中文](README.md) | **English**
+
+# 🚀 LiteUI Studio
+
+LiteUI Studio is an out-of-the-box, standalone local AI audio-visual creation workstation. It encapsulates complex node-based workflows (ComfyUI) into an intuitive, modern UI, backed by hardcore VRAM scheduling mechanisms. No need to mess with complex coding environments—just double-click and smoothly run the world's most cutting-edge image and video generation models locally.
+
+---
+
+## ✨ Core Features
+
+- 🎮 **True Out-of-the-Box Experience**: Built-in, extremely optimized portable Python environment (Thanks to AKI). **No Conda, no `pip install` commands.** Unzip, double-click the `.bat`, and you are good to go.
+- 🎬 **Flagship Engine Lineup**:
+  - **Flux2**: Supports Txt2Img and Img2Img, paired with LoRAs for cinematic quality.
+  - **Wan 2.2**: Img2Vid engine, supporting both lightweight silent mode and built-in MMAudio environmental sound synthesis.
+  - **LTX-2.3**: Native audio-video synchronous engine. Supports "Director's Timeline" prompts (e.g., `0-1s: takes off hat, 1-8s: speaking`), achieving precise lip-sync.
+- 🔄 **Seamless Workflow**: Got a perfect generation in the "Image" tab? Click "Send to Video" to instantly transfer it as the initial frame. No manual saving/uploading required.
+- 🔍 **Metadata Inspector**: Drag-and-drop instant feedback. Drag your generated raw image or video into the inspector to instantly retrieve its original prompt, seed, and parameter recipe in beautiful markdown formatting.
+
+---
+
+## 💻 Hardware Requirements
+
+- **OS**: Windows 10 / 11
+- **GPU**: **NVIDIA** GPU with 8GB VRAM (Highly recommend consumer sweet-spot cards like RTX 4060 / 3060). If using 6B VRAM, carefully choose your parameters.
+- **RAM**: 16~32GB Recommended (Since large model offloading requires system RAM, setting up at least 20GB of Windows Virtual Memory/Pagefile is recommended).
+
+---
+
+## 🛠️ Getting Started
+
+Due to the inclusion of full runtime libraries but excluding the massive model weights, please initialize your new environment following these steps:
+
+### 1. Prepare FFmpeg (Crucial Component)
+This project relies on FFmpeg for lightning-fast lossless audio/video muxing and in-place metadata injection.
+- Download the Windows version of `ffmpeg.exe` and `ffprobe.exe` and place them **directly in the root directory** (same level as `start.bat`).
+
+### 2. Download and Place Model Weights
+Download the required models from HuggingFace or community hubs and place them in the corresponding `backend_comfyui/models` folders:
+```text
+LiteUI-Studio/
+  └─ backend_comfyui/
+       └─ models/
+            ├─ unet/      <-- Flux2, Wan2.2, LTX-2.3 .gguf base models
+            ├─ clip/      <-- Text encoders like UMT5, Gemma, etc.
+            ├─ vae/       <-- Corresponding VAE files
+            ├─ mmaudio/   <-- MMAudio base models
+            └─ loras/     <-- Your style/character LoRAs
+```
+
+### 3. One-Click Launch
+- Double-click **`start.bat`** in the root directory.
+- Grab a coffee and wait for the terminal to display "Engine started successfully". The modern web console will pop up automatically in your browser!
+
+---
+
+## 💡 Tips
+
+- **Hardware Alarm Interception**: If extreme settings cause an underlying OOM, a clear red error will pop up in the top right of the UI. VRAM will be cleared automatically; just adjust your settings and try again without restarting the software.
+- **Emergency Brake**: Noticed a typo in the prompt mid-generation? Click the `[🛑 Stop]` button. The task terminates instantly, returning all occupied VRAM.
+---
+
+**🤖 AI Usage Declaration:**
+The system architecture design, core logic coding & debugging, frontend UI interaction design, and **even the README document you are reading**, were accomplished with the deep involvement and Pair Programming assistance of Large Language Models (LLMs).
+
+Special thanks to the open-source community:
+- [ComfyUI](https://github.com/comfyanonymous/ComfyUI) for the powerful node-based inference backend.
+- [Gradio](https://gradio.app/) for the elegant frontend framework.
+- [秋葉aaaki](https://space.bilibili.com/12566101) for the extremely optimized portable Windows runtime environment.
+```
