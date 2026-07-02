@@ -1,7 +1,7 @@
 [English](README.md) | **简体中文**
 
 > [!NOTE]
-> ✨ **声明**：本文档由**Gemini 3.1 Pro Preview**生成。
+> ✨ **声明**：本文档由**Gemini 3.1 Pro Preview**生成。本项目的实际效果取决于用户硬件配置。
 
 # 🚀 LiteUI Studio
 
