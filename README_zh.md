@@ -67,7 +67,23 @@ LiteUI-Studio/
 **🤖 AI 辅助声明 (AI Usage Declaration):**
 本项目的系统架构设计、核心逻辑代码的编写与 Debug、前端 UI 交互设计，以及**您正在阅读的这篇 README 文档**，均是在大语言模型（LLM）的深度参与和结对编程（Pair Programming）下辅助完成的。
 
+---
+
 特别感谢开源社区：
 - [ComfyUI](https://github.com/comfyanonymous/ComfyUI) 提供的强大节点式推理后端。
 - [Gradio](https://gradio.app/) 提供的优雅前端框架。
 - [秋葉aaaki](https://space.bilibili.com/12566101) 大佬提供的极致优化的便携版 Windows 运行环境。
+
+模型地址：
+- [unsloth/FLUX.2-klein-9B-gguf](https://huggingface.co/unsloth/FLUX.2-klein-9B-GGUF)
+- [QuantStack/Wan2.2-I2V-A14B-GGUF](https://huggingface.co/QuantStack/Wan2.2-I2V-A14B-GGUF)
+- [unsloth/LTX-2.3-GGUF](https://huggingface.co/unsloth/LTX-2.3-GGUF/tree/main)
+ ---
+
+## ⚖️ 免责声明 (Disclaimer)
+
+1. **学术与交流目的**：本项目（LiteUI Studio）及其相关的代码、启动脚本、包装架构，仅供个人学习、学术研究与技术交流使用，**严禁用于任何商业用途**。
+2. **生成内容责任**：本项目仅提供底层的工程调度架构，**本身不包含任何模型权重**。用户利用本项目及自行下载的开源 AI 模型（如 Flux、Wan、LTX 等）所生成的任何图像、视频、音频内容，其版权、法律责任及道德风险均由**使用者本人**承担。
+3. **合法合规使用**：强烈呼吁用户在当地法律法规允许的范围内使用本软件。**严禁**使用本项目生成或传播涉及色情、暴力、散布虚假信息、侵犯他人肖像权/名誉权/著作权（如 Deepfake 恶意伪造）等违法违规内容。
+4. **第三方协议约束**：使用本项目拉起的第三方模型及代码库，请务必严格遵守其原作者发布的开源协议。
+5. **硬件风险**：AI 模型的推理会对 GPU 产生极高的满载压力。虽然本项目已尽力优化显存调度，但对于任何因长时间极限满载运行导致的硬件过热、损毁或数据丢失，开发者不承担任何直接或间接责任。
