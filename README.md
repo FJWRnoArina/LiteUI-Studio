@@ -1,66 +1,71 @@
+
 ***
 
 # 🚀 LiteUI Studio
 
-**Bring Heavy AI Video Models to 8GB Consumer GPUs.**  
-让 8GB 显存的平民电脑，也能极其流畅地跑通百亿参数的前沿 AI 视频大模型。
+**把动辄 30B+ 参数的顶级 AI 视频巨兽，优雅地塞进你的消费级显卡。**
 
-LiteUI Studio 是一个极其轻量、开箱即用的本地 AI 创作工作站。它通过将底层的 ComfyUI 降级为无头引擎（Headless Backend），结合独立的高级显存调度策略，成功在 **8GB VRAM** 的消费级显卡上稳定部署了包括 **Wan2.2 (14B)** 和 **LTX-2.3 (34B)** 在内的顶级音视频多模态模型。
+LiteUI Studio 是一个开箱即用、完全独立的本地 AI 视听创作工作站。它以极其硬核的底层显存调度机制，将庞杂的节点式连线（ComfyUI）封装成了对人类直觉最友好的现代化交互界面。无需折腾复杂的代码环境，只需双击运行，即可在本地流畅驱动目前全球最前沿的图像与视频生成模型。
 
-<img src="[image-url](https://github.com/FJWRnoArina/LiteUI-Studio/blob/main/preview.png)" alt="Alt Text" width="768" height="512"></img>
+---
 
-## ✨ 核心特性 (Features)
+## ✨ 核心亮点 (Features)
 
-*   **⚡ 极限显存压榨 (8GB VRAM Friendly)**：内置微服务级的管线切片与“核弹级”显存洗地机制，彻底解决显存碎片化。连续生成 100 次，速度依然如初。
-*   **📦 真正的解压即用 (Portable)**：内置深度优化过的 Python 运行环境与预编译 C++ 算子。**免装 Python、免装 Conda、免敲命令**，双击一键启动。
-*   **🎬 旗舰级音视频管线 (All-in-One Studio)**：
-    *   **Flux2**: 文生图 / 图生图 / 一键推送到视频。
-    *   **Wan2.2**: 图生视频 / 动态配音混流 (MMAudio)。
-    *   **LTX-2.3**: 导演级时间轴控制 / 声像画同轨原生生成。
-*   **🛠️ 极客级交互体验 (UX)**：毫秒级 Metadata 原位注入、跨标签页无缝传图、一键定位本地输出文件、魔法参数放大镜。
+- 🎮 **真正的开箱即用**：内置经过极致调优的便携版 Python 环境（感谢[秋葉aaaki](https://space.bilibili.com/12566101/dynamic)大佬），**无需配置 Conda、无需敲击 `pip` 命令**，解压后双击 `.bat` 即可启动。
+- 🎬 **大满贯旗舰引擎**：
+  - **Flux2**：支持文生图、图生图，搭配 LoRA 实现电影级画质。
+  - **Wan 2.2 (14B)**：图生视频引擎，支持轻量无声模式与内置 MMAudio 环境音轨合成模式。
+  - **LTX-2.3 (34B 联合架构)**：原生声像画同轨引擎，支持“导演时间轴”提示词（如 `0-1秒: 摘帽子, 1-8秒: 说话`），实现精准对口型。
+- 🔄 **无缝流转工作流**：在“图像页”抽出的完美盲盒，点击“一键发送”，瞬间无缝流转至“视频页”作为初始帧，无需反复保存上传。
+- 🔍 **Metadata读取器 (Metadata Inspector)**：支持“即抛即得”。将生成的原图或视频拖入提取器，瞬间还原当时的提示词、种子和参数配方。
 
 ---
 
 ## 💻 硬件要求 (Requirements)
 
-*   **操作系统**: Windows 10 / 11 (64-bit)
-*   **显卡**: NVIDIA GPU，**最少 8GB 显存** (建议更新至最新版显卡驱动)
-*   **内存**: 建议 32GB RAM，并开启至少 20GB 的 Windows 虚拟内存。
+- **操作系统**: Windows 10 / 11
+- **显卡**: **NVIDIA** GPU，显存 $\ge$ 8GB（强推 RTX 4060 / 3060 等消费级甜品卡）。6G显存请在合理调整生成参数后使用。
+- **内存**: 推荐$\ge$ 32GB（因为大模型置换需要占用系统内存，建议开启至少 20GB 的 Windows 虚拟内存）。若显存较低，请在合理调整生成参数后使用。
 
 ---
 
-## 🚀 快速开始 (Quick Start)
+## 🛠️ 安装与使用 (Getting Started)
 
-### 1. 准备环境工具
-为实现零配置运行，请下载 [FFmpeg (Windows 版)](https://ffmpeg.org/download.html)，将其中的 `ffmpeg.exe` 和 `ffprobe.exe` 直接解压放入本项目的**根目录**中。
+由于项目包含了完整的运行库但未包含动辄几十 GB 的模型权重，请在新电脑上按以下步骤进行初始化：
+
+### 1. 准备 FFmpeg（核心组件）
+本项目依赖 FFmpeg 进行极速的无损音视频混流与元数据注入。
+- 请下载 Windows 版的 `ffmpeg.exe` 和 `ffprobe.exe`，并将它们**直接放在本项目的根目录下**（与 `start.bat` 同级）。
 
 ### 2. 下载并放置模型权重
-由于模型文件巨大（合计约 40GB+），请自行前往 HuggingFace 下载对应格式（GGUF/Safetensors）的模型，并放置到 `backend_comfyui/models/` 的对应文件夹中：
-
+请前往 HuggingFace 或开源社区下载你需要的模型，并存放到 `backend_comfyui/models` 对应的文件夹中：
 ```text
-backend_comfyui/models/
- ├── unet/       # 放置大底模: Wan2.2-14B (GGUF), LTX-2.3-22B (GGUF), Flux2 (GGUF)
- ├── clip/       # 放置文本编码器: UMT5 (Wan用), Gemma-3-12B (LTX用)
- ├── vae/        # 放置解码器: Wan2.1_VAE, LTX Audio/Video VAE
- ├── loras/      # 放置你的风格化微调模型 (.safetensors)
- └── mmaudio/    # 放置 MMAudio 环境音效模型
+LiteUI-Studio/
+  └─ backend_comfyui/
+       └─ models/
+            ├─ unet/      <-- 存放 Flux2、Wan2.2、LTX-2.3 的 .gguf 底模
+            ├─ clip/      <-- 存放 UMT5、Gemma 等文本编码器
+            ├─ vae/       <-- 存放对应的 VAE 文件
+            ├─ mmaudio/   <-- 存放 MMAudio 音频底模
+            └─ loras/     <-- 存放你的各种画风/角色 LoRA
 ```
-*(注：如果不知道下载哪个，界面上拉开“底层模型高级设置”有默认的文件名提示。)*
 
 ### 3. 一键启动
-双击项目根目录下的启动脚本：
-*   ▶️ **`start.bat`** (或者 `run_litevideo.bat`)
-*   终端会静默启动 AI 引擎，并在 5 秒后自动在浏览器中弹出控制台！开始你的创作吧！
+- 双击根目录下的 **`start.bat`**。
+- 喝口水，等待终端显示“引擎启动成功”，现代化的控制台网页将自动在浏览器中弹出，尽情创作吧！
 
 ---
 
-## 🔬 致开发者 / 研究者 (For Developers & Recruiters)
+## 💡 使用小贴士 (Tips)
 
-本项目不仅仅是一个套壳 UI，其底层重构了多项 AI 基础设施（AI Infra）逻辑，欢迎查阅源码：
+- **硬件报警拦截**：如果你参数设置过高导致底层 OOM，网页右上角会立刻弹出清晰的中文红色报错，同时底层会自动清空显存，你无需重启软件即可重新调整参数生成。
+- **强制急刹车**：生成途中如果发现提示词写错了，直接点击界面上的 `[🛑 打断]` 按钮，任务会瞬间终止并退回所有占用的显存。
+---
 
-1. **前后端解耦架构 (Decoupled Architecture)**
-   将 ComfyUI 作为常驻守护进程（Daemon），通过 WebSocket 进行事件通信与错误雷达嗅探，实现毫秒级打断与异常（如 OOM）精准捕获。
-2. **零拷贝物理路由 (Zero-Copy I/O)**
-   抛弃了传统的 HTTP 二进制流下载。前端通过 `os.path` 直接映射后端物理输出路径，配合 FFmpeg `-c copy` 实现 0.1秒内的 Metadata 原位重写与混流。
-3. **管线切片与状态机 (Pipeline Slicing)**
-   针对 Wan2.2 模型，使用 Python 将巨大的 DAG 计算图切分为 `High Noise` -> `Low Noise` -> `Interp & Dubbing` 三个独立生命周期，期间强制触发 PyTorch 显存重组（`expandable_segments`），挑战了 8GB 显卡的物理极限。
+**🤖 AI 辅助声明 (AI Usage Declaration):**
+本项目的系统架构设计、核心逻辑代码的编写与 Debug、前端 UI 交互设计，以及**您正在阅读的这篇 README 文档**，均是在大语言模型（LLM）的深度参与和结对编程（Pair Programming）下辅助完成的。
+
+特别感谢开源社区：
+- [ComfyUI](https://github.com/comfyanonymous/ComfyUI) 提供的强大节点式推理后端。
+- [Gradio](https://gradio.app/) 提供的优雅前端框架。
+- [秋葉aaaki](https://space.bilibili.com/12566101) 大佬提供的极致优化的便携版 Windows 运行环境。
