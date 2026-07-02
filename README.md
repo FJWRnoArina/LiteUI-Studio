@@ -38,22 +38,19 @@ Due to the inclusion of full runtime libraries but excluding the massive model w
 This project relies on FFmpeg for lightning-fast lossless audio/video muxing and in-place metadata injection.
 - Download the Windows version of `ffmpeg.exe` and `ffprobe.exe` and place them **directly in the root directory** (same level as `start.bat`).
 
-### 2. Download and Place Model Weights
-Download the required models from HuggingFace or community hubs and place them in the corresponding `backend_comfyui/models` folders:
-```text
-LiteUI-Studio/
-  └─ backend_comfyui/
-       └─ models/
-            ├─ unet/      <-- Flux2, Wan2.2, LTX-2.3 .gguf base models
-            ├─ clip/      <-- Text encoders like UMT5, Gemma, etc.
-            ├─ vae/       <-- Corresponding VAE files
-            ├─ mmaudio/   <-- MMAudio base models
-            └─ loras/     <-- Your style/character LoRAs
-```
-
-### 3. One-Click Launch
+### 2. One-Click Launch
 - Double-click **`start.bat`** in the root directory.
 - Grab a coffee and wait for the terminal to display "Engine started successfully". The modern web console will pop up automatically in your browser!
+
+### 3. Download and Add More Models and LoRAs
+- **Only GGUF quantized models are supported.** The model loaders only support the models based on the same archtectures with default models. (e.g. For txt2img, only FLUX.2-klein-9B and its fine-tuned models are supported.
+- 1. **[Hugging Face](https://huggingface.co/)**
+   * The world's largest open-source AI community and the cornerstone of academic AI research.
+   * **Best for**: Official Base Models (Flux2, Wan2.2, LTX-2.3) and fine-tuned versions.
+- 2. **[Civitai](https://civitai.com/)**
+   * The most active creator community for Generative AI.
+   * **Best for**: Specific art styles, character concepts, and custom LoRA weights.
+   * *Note: As a highly unrestricted UGC (User-Generated Content) platform, it contains a vast amount of community-uploaded material. Please use discretion when browsing and strictly adhere to this project's Disclaimer and your local regulations.*
 
 ---
 
