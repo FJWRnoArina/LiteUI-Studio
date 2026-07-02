@@ -58,6 +58,52 @@ This project relies on FFmpeg for lightning-fast lossless audio/video muxing and
 
 - **Hardware Alarm Interception**: If extreme settings cause an underlying OOM, a clear red error will pop up in the top right of the UI. VRAM will be cleared automatically; just adjust your settings and try again without restarting the software.
 - **Emergency Brake**: Noticed a typo in the prompt mid-generation? Click the `[🛑 Stop]` button. The task terminates instantly, returning all occupied VRAM.
+
+  
+---
+
+## 🙋 Q&A
+
+**Q: Is LiteUI-Studio a paid project?**
+> A: LiteUI-Studio is completely open-source and free of charge, with no paid content. The GitHub release page is at [FJWRnoArina/LiteUI-Studio](https://github.com/FJWRnoArina/LiteUI-Studio/).
+
+**Q: What is the difference between LiteUI-Studio and mainstream tools like SD-webui or ComfyUI?**
+> A: Both SD-webui and ComfyUI have a certain learning curve for beginners. For instance, using SD-webui requires users to manually configure parameters such as the base model, CLIP, VAE, negative prompts, guidance scale, sampler, steps, CFG Scale, Upscaler, Denoising Strength, Hires. fix, and VAE Tile, and its VRAM management is not as efficient as ComfyUI. On the other hand, ComfyUI has an even steeper learning curve, requiring familiarity with node functions, modular management, and node connection logic. LiteUI-Studio utilizes the ComfyUI API as its underlying architecture, leveraging its excellent VRAM management. By wrapping complex text-to-image, image-to-image, and video generation workflows into a user-friendly webui, it significantly simplifies the user experience.
+
+**Q: Is LiteUI-Studio based on the ComfyUI architecture?**
+> A: Yes. The files in the `/core/workflows` directory are standard workflows that can be directly opened in ComfyUI. In fact, while LiteUI-Studio is running, you can directly access `http://127.0.0.1:8188/` to open ComfyUI.
+
+**Q: Why not design an independent model loading architecture?**
+> A: This was attempted during the initial design phase of LiteUI-Studio. However, the biggest pain point in integrating various open-source projects is compatibility. During practical coding, we found extremely poor compatibility between the `transformers` library, `xformers`, model pipeline libs, quantization libs, and other dependencies. Issues included mismatched tool library versions (like `torch`, `numpy`, or even Python itself) and multiple layers of empty mappings (which could take an eternity to fix manually). ComfyUI resolves the compatibility issues between model pipelines and quantization exceptionally well, making it a key reason we chose it as our underlying architecture.
+
+**Q: Does LiteUI-Studio support generating any type of content?**
+> A: The generated content depends on the model selected and the prompts provided by the user. Please use LiteUI-Studio strictly in compliance with the project's disclaimer and your local laws and regulations.
+
+**Q: There are some options or parameters in LiteUI-Studio that I don't understand.**
+> A: You can copy or screenshot the text you want to inquire about and search it using search engines or AI tools (such as ChatGPT, Gemini, Claude etc.) to get detailed help.
+
+**Q: I encountered an error during runtime that I don't understand or cannot fix.**
+> A: Some errors do not affect normal operation and can be ignored. If an error does affect operation, you can first copy or screenshot the error message and search it via search engines or AI tools (ChatGPT, Gemini, Claude etc.). You can also try restarting LiteUI-Studio. If the issue remains unresolved, please report it on the project's release site or GitHub issues page.
+
+**Q: LiteUI-Studio cannot load the model I provided.**
+> A: LiteUI-Studio currently only supports the GGUF quantized versions of three models: FLUX.2-klein-9B, Wan2.2-I2V-A14B, and LTX-2.3 (along with their finetuned variants). These are the best quality models currently available (as of July 2026) that can run locally with limited VRAM. If you need to use other models, please download and use SD-webui or ComfyUI.
+
+**Q: LiteUI-Studio cannot load the LoRA I provided.**
+> A: Please ensure that the provided LoRA is compatible with FLUX.2-klein-9B, Wan2.2-I2V-A14B, or LTX-2.3. Note: LoRAs used for image generation cannot be used for video generation, and vice versa.
+
+**Q: I don't know how to write prompts.**
+> A: AI tools (ChatGPT, Gemini, Claude etc.) can write prompts for you; you can simply copy and use them.
+
+**Q: I want to trace the generation parameters of a high-quality image or video.**
+> A: Simply upload it to Metadata Inspector.
+
+**Q: The quality of LiteUI-Studio's generation results is not as good as expected.**
+> A: To accommodate low VRAM, the pre-installed models in LiteUI-Studio are quantized versions, which impacts generation quality to a certain extent. You can try generating multiple times, modifying your prompts, or increasing the sampling steps.
+
+**Q: Wan2.2 and LTX2.3 are both for video generation, so what is the difference between them?**
+> A: Wan2.2 currently does not natively support built-in audio or lip-syncing. An MMAudio dubbing module has been additionally equipped in LiteUI-Studio (though it does not support vocal dialogue). LTX2.3 supports both dubbing and dialogue (with automatic lip-syncing).
+
+
 ---
 
 **🤖 AI Usage Declaration:**
