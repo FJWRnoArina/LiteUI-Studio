@@ -23,6 +23,7 @@ LiteUI Studio is an out-of-the-box, standalone local AI audio-visual creation wo
 
 ## 💻 Hardware Requirements
 
+- **Disk Usage**: 88 GB disk space (including 77.5 GB model files)
 - **OS**: Windows 10 / 11
 - **GPU**: **NVIDIA** GPU with 8GB VRAM (Highly recommend consumer sweet-spot cards like RTX 4060 / 3060). If using 6B VRAM, carefully choose your parameters.
 - **RAM**: 16~32GB Recommended (Since large model offloading requires system RAM, setting up at least 20GB of Windows Virtual Memory/Pagefile is recommended).
