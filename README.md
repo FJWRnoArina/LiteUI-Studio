@@ -1,3 +1,5 @@
+**简体中文** | [English](README_en.md)
+
 > [!NOTE]
 > ✨ **声明**：本文档由**Gemini 3.1 Pro Preview**生成。
 
