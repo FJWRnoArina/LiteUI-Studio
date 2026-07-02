@@ -1,0 +1,357 @@
+{
+  "298": {
+    "inputs": {
+      "frame_rate": [
+        "257:243",
+        0
+      ],
+      "loop_count": 0,
+      "filename_prefix": "video/Wan2.2",
+      "format": "video/nvenc_h264-mp4",
+      "pix_fmt": "yuv420p",
+      "bitrate": 10,
+      "megabit": true,
+      "save_metadata": true,
+      "pingpong": false,
+      "save_output": true,
+      "images": [
+        "257:248",
+        0
+      ],
+      "audio": [
+        "257:296:279",
+        0
+      ]
+    },
+    "class_type": "VHS_VideoCombine",
+    "_meta": {
+      "title": "Video Combine 🎥🅥🅗🅢"
+    }
+  },
+  "257:301": {
+    "inputs": {
+      "value": true
+    },
+    "class_type": "PrimitiveBoolean",
+    "_meta": {
+      "title": "Separate Audio Prompt"
+    }
+  },
+  "257:300": {
+    "inputs": {
+      "switch": [
+        "257:301",
+        0
+      ],
+      "on_false": [
+        "257:286",
+        0
+      ],
+      "on_true": [
+        "257:299",
+        0
+      ]
+    },
+    "class_type": "ComfySwitchNode",
+    "_meta": {
+      "title": "Switch"
+    }
+  },
+  "257:286": {
+    "inputs": {
+      "value": "少女在水中浮动，眨眼，保持姿势"
+    },
+    "class_type": "PrimitiveStringMultiline",
+    "_meta": {
+      "title": "Positive Prompt"
+    }
+  },
+  "257:242": {
+    "inputs": {
+      "value": 4
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Multiplier"
+    }
+  },
+  "257:299": {
+    "inputs": {
+      "value": "A girl floating slowly on a dark magical lake. Gentle water ripples around her body. Soft and slow breathing sound of a resting young woman, quiet and natural, close but subtle. Tiny glowing spirits drift nearby, producing faint sparkling sounds. Light water movement, distant ambient wind, gentle underwater resonance. Calm, peaceful, weightless atmosphere. Quiet fantasy ambience with spacious reverberation and delicate environmental sounds."
+    },
+    "class_type": "PrimitiveStringMultiline",
+    "_meta": {
+      "title": "Audio Prompt"
+    }
+  },
+  "257:229": {
+    "inputs": {
+      "value": 10
+    },
+    "class_type": "PrimitiveFloat",
+    "_meta": {
+      "title": "Float (Duration)"
+    }
+  },
+  "257:302": {
+    "inputs": {
+      "value": 768
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Width"
+    }
+  },
+  "257:303": {
+    "inputs": {
+      "value": 512
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Height"
+    }
+  },
+  "257:246": {
+    "inputs": {
+      "value": 12.5
+    },
+    "class_type": "PrimitiveFloat",
+    "_meta": {
+      "title": "Float (FPS)"
+    }
+  },
+  "257:243": {
+    "inputs": {
+      "expression": "25 * b",
+      "values.a": [
+        "257:246",
+        0
+      ],
+      "values.b": [
+        "257:242",
+        0
+      ]
+    },
+    "class_type": "ComfyMathExpression",
+    "_meta": {
+      "title": "interpolated frame rate"
+    }
+  },
+  "257:241": {
+    "inputs": {
+      "expression": "floor (a * b + 1)",
+      "values.a": [
+        "257:229",
+        0
+      ],
+      "values.b": [
+        "257:246",
+        0
+      ]
+    },
+    "class_type": "ComfyMathExpression",
+    "_meta": {
+      "title": "Math Expression"
+    }
+  },
+  "257:296:281": {
+    "inputs": {
+      "vocoder_model": "best_netG.pt"
+    },
+    "class_type": "MMAudioVoCoderLoader",
+    "_meta": {
+      "title": "MMAudio VoCoderLoader"
+    }
+  },
+  "257:296:279": {
+    "inputs": {
+      "duration": [
+        "257:229",
+        0
+      ],
+      "steps": 25,
+      "cfg": 4.5,
+      "seed": 516701285195022,
+      "prompt": [
+        "257:300",
+        0
+      ],
+      "negative_prompt": "music, background music, soundtrack, singing, narration, speech,\nunrelated sounds, random noises, extra sound sources,\ndistortion, clipping, crackling, buzzing, static noise, artifacts,\necho, excessive reverb, muffled audio,\nlow quality, compressed audio,\nabrupt volume changes, unstable loudness,\nout of sync, delayed audio,\nrepetitive sounds, looping sounds,\ncrowd noise, traffic noise, wind noise,\nunrealistic sound effects",
+      "mask_away_clip": false,
+      "force_offload": true,
+      "mmaudio_model": [
+        "257:296:280",
+        0
+      ],
+      "feature_utils": [
+        "257:296:282",
+        0
+      ],
+      "images": [
+        "257:296:310",
+        0
+      ]
+    },
+    "class_type": "MMAudioSampler",
+    "_meta": {
+      "title": "MMAudio Sampler"
+    }
+  },
+  "257:296:282": {
+    "inputs": {
+      "vae_model": "mmaudio_vae_44k_fp16.safetensors",
+      "synchformer_model": "mmaudio_synchformer_fp16.safetensors",
+      "clip_model": "apple_DFN5B-CLIP-ViT-H-14-384_fp16.safetensors",
+      "mode": "44k",
+      "precision": "fp16",
+      "bigvgan_vocoder_model": [
+        "257:296:281",
+        0
+      ]
+    },
+    "class_type": "MMAudioFeatureUtilsLoader",
+    "_meta": {
+      "title": "MMAudio FeatureUtilsLoader"
+    }
+  },
+  "257:296:312": {
+    "inputs": {
+      "expression": "max(a / 8,256)",
+      "values.a": [
+        "257:303",
+        0
+      ]
+    },
+    "class_type": "ComfyMathExpression",
+    "_meta": {
+      "title": "Math Expression"
+    }
+  },
+  "257:296:311": {
+    "inputs": {
+      "expression": "max(a / 8,256)",
+      "values.a": [
+        "257:302",
+        0
+      ]
+    },
+    "class_type": "ComfyMathExpression",
+    "_meta": {
+      "title": "Math Expression"
+    }
+  },
+  "257:296:310": {
+    "inputs": {
+      "upscale_method": "lanczos",
+      "width": [
+        "257:296:311",
+        1
+      ],
+      "height": [
+        "257:296:312",
+        1
+      ],
+      "crop": "disabled",
+      "image": [
+        "257:313",
+        0
+      ]
+    },
+    "class_type": "ImageScale",
+    "_meta": {
+      "title": "Upscale Image"
+    }
+  },
+  "257:296:280": {
+    "inputs": {
+      "mmaudio_model": "mmaudio_large_44k_nsfw_gold_8.5k_final_fp16.safetensors",
+      "base_precision": "fp16"
+    },
+    "class_type": "MMAudioModelLoader",
+    "_meta": {
+      "title": "MMAudio ModelLoader"
+    }
+  },
+  "257:314": {
+    "inputs": {
+      "value": 2
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Hidden fps multiplier"
+    }
+  },
+  "257:315": {
+    "inputs": {
+      "expression": "a * b",
+      "values.a": [
+        "257:314",
+        0
+      ],
+      "values.b": [
+        "257:246",
+        0
+      ]
+    },
+    "class_type": "ComfyMathExpression",
+    "_meta": {
+      "title": "Math Expression"
+    }
+  },
+  "257:313": {
+    "inputs": {
+      "ckpt_name": "rife47.pth",
+      "multiplier": [
+        "257:314",
+        0
+      ],
+      "scale_factor": 1,
+      "ensemble": false,
+      "clear_cache_after_n_frames": 2,
+      "frames": [
+        "257:325",
+        0
+      ]
+    },
+    "class_type": "RIFE_VFI_Opt",
+    "_meta": {
+      "title": "🐇 RIFE VFI Interpolate by Multiple"
+    }
+  },
+  "257:248": {
+    "inputs": {
+      "ckpt_name": "rife47.pth",
+      "multiplier": [
+        "257:242",
+        0
+      ],
+      "scale_factor": 1,
+      "ensemble": false,
+      "clear_cache_after_n_frames": 2,
+      "frames": [
+        "257:313",
+        0
+      ]
+    },
+    "class_type": "RIFE_VFI_Opt",
+    "_meta": {
+      "title": "🐇 RIFE VFI Interpolate by Multiple"
+    }
+  },
+  "257:325": {
+    "inputs": {
+      "video": "backend_comfyui/output/video/Wan2.2_00001-audio.mp4",
+      "force_rate": 0,
+      "custom_width": 0,
+      "custom_height": 0,
+      "frame_load_cap": 0,
+      "skip_first_frames": 0,
+      "select_every_nth": 1,
+      "format": "Wan"
+    },
+    "class_type": "VHS_LoadVideoPath",
+    "_meta": {
+      "title": "Load Video (Path) 🎥🅥🅗🅢"
+    }
+  }
+}
