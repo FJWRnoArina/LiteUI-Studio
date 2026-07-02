@@ -11,7 +11,7 @@ LiteUI Studio is an out-of-the-box, standalone local AI audio-visual creation wo
 
 ## ✨ Core Features
 
-- 🎮 **True Out-of-the-Box Experience**: Built-in, extremely optimized portable Python environment (Thanks to AKI). **No Conda, no `pip install` commands.** Unzip, double-click the `.bat`, and you are good to go.
+- 🎮 **True Out-of-the-Box Experience**: Built-in, extremely optimized portable Python environment (Thanks to [秋葉aaaki](https://space.bilibili.com/12566101)). **No Conda, no `pip install` commands.** Unzip, double-click the `.bat`, and you are good to go.
 - 🎬 **Flagship Engine Lineup**:
   - **Flux2**: Supports Txt2Img and Img2Img, paired with LoRAs for cinematic quality.
   - **Wan 2.2**: Img2Vid engine, supporting both lightweight silent mode and built-in MMAudio environmental sound synthesis.
