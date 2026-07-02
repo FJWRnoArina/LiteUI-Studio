@@ -1,5 +1,8 @@
 
-***
+<p align="center">
+  <img src="https://img.shields.io/badge/Generated_by-Gemini_3.1_Pro_Preview-8E75B2?style=for-the-badge&logo=googlegemini&logoColor=white" alt="本文档由Gemini 3.1 Pro Preview生成。">
+</p>
+
 
 # 🚀 LiteUI Studio
 
