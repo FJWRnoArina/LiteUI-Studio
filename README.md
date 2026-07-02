@@ -7,7 +7,7 @@
 
 LiteUI Studio 是一个极其轻量、开箱即用的本地 AI 创作工作站。它通过将底层的 ComfyUI 降级为无头引擎（Headless Backend），结合独立的高级显存调度策略，成功在 **8GB VRAM** 的消费级显卡上稳定部署了包括 **Wan2.2 (14B)** 和 **LTX-2.3 (34B)** 在内的顶级音视频多模态模型。
 
-![UI Preview](https://github.com/FJWRnoArina/LiteUI-Studio/blob/main/preview.png) *(建议在 Github 上传一张你的 WebUI 截图替换此链接)*
+![UI Preview](https://github.com/FJWRnoArina/LiteUI-Studio/blob/main/preview.png = 768x512)
 
 ## ✨ 核心特性 (Features)
 
