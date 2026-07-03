@@ -47,17 +47,11 @@ LiteUI Studio is an out-of-the-box, standalone local AI audio-visual creation wo
 
 ## 🛠️ Getting Started
 
-Due to the inclusion of full runtime libraries but excluding the massive model weights, please initialize your new environment following these steps:
-
-### 1. Prepare FFmpeg (Crucial Component)
-This project relies on FFmpeg for lightning-fast lossless audio/video muxing and in-place metadata injection.
-- Download the Windows version of `ffmpeg.exe` and `ffprobe.exe` and place them **directly in the root directory** (same level as `start.bat`).
-
-### 2. One-Click Launch
+### 1. One-Click Launch
 - Double-click **`start.bat`** in the root directory.
 - Grab a coffee and wait for the terminal to display "Engine started successfully". The modern web console will pop up automatically in your browser!
 
-### 3. Download and Add More Models and LoRAs
+### 2. Download and Add More Models and LoRAs
 - **Only GGUF quantized models are supported.** The model loaders only support the models based on the same archtectures with default models. (e.g. For txt2img, only FLUX.2-klein-9B and its fine-tuned models are supported.
 - 1. **[Hugging Face](https://huggingface.co/)**
    * The world's largest open-source AI community and the cornerstone of academic AI research.
