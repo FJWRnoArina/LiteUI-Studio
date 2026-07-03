@@ -23,7 +23,7 @@ LiteUI Studio is an out-of-the-box, standalone local AI audio-visual creation wo
 
 ## 💻 Hardware Requirements
 
-- **Disk Space**: 88 GB (including about 75 GB of pre-installed model files)
+- **Disk Space**: 85 GB (including about 75 GB of pre-installed model files)
 - **Operating System**: Windows 10 / 11
 - **Graphics Card**: NVIDIA GPU, **minimum 6GB VRAM required** (8GB VRAM or more is recommended, such as RTX 4060 / 3060). 6GB VRAM must be used after reasonably adjusting parameters, and the time taken will increase significantly compared to 8GB VRAM.
 - **Memory**: 16~32GB recommended (since large model swapping consumes system memory, it is recommended to enable at least 20GB of Windows virtual memory). If VRAM is low, please use after reasonably adjusting the generation parameters.
@@ -47,9 +47,63 @@ LiteUI Studio is an out-of-the-box, standalone local AI audio-visual creation wo
 
 ## 🛠️ Getting Started
 
-### 1. One-Click Launch
+### 1. 85GB Full Version One-Click Launch
 - Double-click **`start.bat`** in the root directory.
 - Grab a coffee and wait for the terminal to display "Engine started successfully". The modern web console will pop up automatically in your browser!
+
+> [!TIP]
+> <details>
+> <summary><b> If you want to use Core Edition（~6GB，when you already have ComfyUI）</b></summary>
+>   
+> - 1.Download all files in the project（by 'git clone'，or Click 'Code -> Download ZIP' then unzip.
+> - 2.Download Python environment from the full download link [python.zip](https://pan.baidu.com/s/1lJ3WSWmI-Zbt7jaSvYEyLA?pwd=gxyt)（~6GB), then unzip to the root directory.<b>Ensure a folder named 'python' is shown, and 'python.exe' can be seen after opening (instead of a secondary folder).</b>
+> - 3.Download [ffmpeg](https://www.gyan.dev/ffmpeg/builds/), choose essentials.7z，Unzip 'ffmpeg.exe' and 'ffprobe.exe', and place them to the root directory.
+> - 4.Copy your ComfyUI folder (with 'main.py' inside) to the root directory, <b>and rename the folder to 'backend_comfyui'</b>
+>   You can also download [Windows portable ComfyUI](https://docs.comfy.org/installation/comfyui_portable_windows), unzip to root directory，and rename it to 'backend_comfyui'。
+> - 5.According to the model you want to use, download the following files into the designated directories (you may search them directly by filename):
+>   <details>
+>   <summary><b>Model List</b></summary>
+>     
+>   ```text
+>   LiteUI-Studio/
+>     └─ backend_comfyui/
+>          └─ models/
+>               ├─ clip/      
+>                   └─ qwen_3_8b.safetensors   <-- For Flux2
+>                   └─ umt5_xxl_fp8_e4m3fn_scaled.safetensors  <-- For Wan2.2
+>                   └─ ltx-2.3_text_projection_bf16.safetensors  <-- For LTX2.3
+>                   └─ gemma-3-12b-it-Q2_K.gguf  <-- For LTX2.3
+>   
+>               ├─ diffusion_models/
+>                   └─ flux-2-klein-9b-Q4_K_M.gguf
+>                   └─ Wan2.2-I2V-A14B-HighNoise-Q4_K_M.gguf
+>                   └─ Wan2.2-I2V-A14B-LowNoise-Q4_K_M.gguf
+>                   └─ ltx-2.3-22b-distilled-1.1-Q4_K_M.gguf
+>   
+>               ├─ latent_upscale_models/
+>                   └─ ltx-2.3-spatial-upscaler-x2-1.0.safetensors  <-- For LTX2.3
+>   
+>               ├─ loras/
+>                   └─ wan2.2_i2v_lightx2v_4steps_lora_v1_high_noise.safetensors  <-- For Wan2.2
+>                   └─ wan2.2_i2v_lightx2v_4steps_lora_v1_low_noise.safetensors  <-- For Wan2.2
+>   
+>               ├─ mmaudio/  <-- Download them ONLY IF you want to use dubbing module for Wan2.2.
+>                   └─ apple_DFN5B-CLIP-ViT-H-14-384_fp16.safetensors
+>                   └─ best_netG.pt
+>                   └─ mmaudio_large_44k_v2_fp16.safetensors
+>                   └─ mmaudio_synchformer_fp16.safetensors
+>                   └─ mmaudio_vae_44k_fp16.safetensors
+>                   └─ mmaudio_vocoder_bigvgan_best_netG_bf16.safetensors
+>   
+>               ├─ vae/
+>                   └─ flux2-vae.safetensors  <-- For Flux2
+>                   └─ Wan2.1_VAE.safetensors  <-- For Wan2.2
+>                   └─ ltx-2.3-22b-distilled_video_vae.safetensors  <-- For LTX2.3
+>                   └─ ltx-2.3-22b-distilled_audio_vae.safetensors  <-- For LTX2.3
+>   ```
+>   
+>   </details>
+> </details>
 
 ### 2. Download and Add More Models and LoRAs
 - **Only GGUF quantized models are supported.** The model loaders only support the models based on the same archtectures with default models. (e.g. For txt2img, only FLUX.2-klein-9B and its fine-tuned models are supported.
