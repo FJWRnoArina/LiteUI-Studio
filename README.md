@@ -35,9 +35,9 @@ LiteUI Studio is an out-of-the-box, standalone local AI audio-visual creation wo
 
 | Generation Task | Resolution & Duration | RTX 5060 (8GB) | RTX 2060 (6GB) |
 | :--- | :--- | :--- | :--- |
-| **Flux2 Text-to-Image** | 1024x1024 | ~30s | ~250s |
+| **Flux2 Text-to-Image** | 1024x1024 | ~30s | ~250s* |
 | **Flux2 Image-to-Image** | 1024x1024 | ~45s | ~450s |
-| **LTX-2.3 Text-to-Video** | 512x768, 10s (24fps)| ~300s | ~3800s |
+| **LTX-2.3 Text-to-Video** | 512x768, 10s (24fps)| ~300s | ~3800s* |
 | **LTX-2.3 Image-to-Video** | 512x768, 10s (24fps)| ~300s | ~3900s |
 
 *💡 **Note**: Under 6GB VRAM, the VAE encoding/decoding time far exceeds the sampling process. For example, in the 250s Image-to-Image test, only 21s is used for sampling, while the rest of the time is entirely spent on CPU Offload and VAE decoding.*
