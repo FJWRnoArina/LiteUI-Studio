@@ -1,0 +1,105 @@
+{
+  "3": {
+    "inputs": {
+      "video": "",
+      "force_rate": 0,
+      "custom_width": 0,
+      "custom_height": 0,
+      "frame_load_cap": 0,
+      "skip_first_frames": 0,
+      "select_every_nth": 1,
+      "format": "LTXV"
+    },
+    "class_type": "VHS_LoadVideoPath",
+    "_meta": {
+      "title": "Load Video (Path) 🎥🅥🅗🅢"
+    }
+  },
+  "4": {
+    "inputs": {
+      "ckpt_name": "rife47.pth",
+      "multiplier": [
+        "5",
+        0
+      ],
+      "scale_factor": 1,
+      "ensemble": false,
+      "clear_cache_after_n_frames": 2,
+      "frames": [
+        "3",
+        0
+      ]
+    },
+    "class_type": "RIFE_VFI_Opt",
+    "_meta": {
+      "title": "🐇 RIFE VFI Interpolate by Multiple"
+    }
+  },
+  "5": {
+    "inputs": {
+      "value": 2
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Interpolation Multiplier"
+    }
+  },
+  "6": {
+    "inputs": {
+      "frame_rate": [
+        "7",
+        0
+      ],
+      "loop_count": 0,
+      "filename_prefix": "highfps_fixed/vid",
+      "format": "video/h264-mp4",
+      "pix_fmt": "yuv420p",
+      "crf": 19,
+      "save_metadata": true,
+      "trim_to_audio": false,
+      "pingpong": false,
+      "save_output": true,
+      "images": [
+        "4",
+        0
+      ],
+      "audio": [
+        "3",
+        2
+      ]
+    },
+    "class_type": "VHS_VideoCombine",
+    "_meta": {
+      "title": "Video Combine 🎥🅥🅗🅢"
+    }
+  },
+  "7": {
+    "inputs": {
+      "expression": "a * b",
+      "values.a": [
+        "5",
+        0
+      ],
+      "values.b": [
+        "9",
+        0
+      ]
+    },
+    "class_type": "ComfyMathExpression",
+    "_meta": {
+      "title": "Math Expression"
+    }
+  },
+  "9": {
+    "inputs": {
+      "video_info": [
+        "3",
+        3
+      ]
+    },
+    "class_type": "VHS_VideoInfo",
+    "_meta": {
+      "title": "Video Info 🎥🅥🅗🅢"
+    }
+  }
+}

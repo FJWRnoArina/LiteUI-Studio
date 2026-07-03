@@ -17,6 +17,26 @@
       "title": "LoadLatent"
     }
   },
+  "100": {
+    "inputs": {
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 16,
+      "samples": [
+        "257:253",
+        0
+      ],
+      "vae": [
+        "257:235",
+        0
+      ]
+    },
+    "class_type": "VAEDecodeTiled",
+    "_meta": {
+      "title": "VAE Decode (Tiled)"
+    }
+  },
   "257:235": {
     "inputs": {
       "vae_name": "Wan2.1_VAE.safetensors"
@@ -371,22 +391,6 @@
       "title": "KSampler (Advanced)"
     }
   },
-  "257:245": {
-    "inputs": {
-      "samples": [
-        "257:253",
-        0
-      ],
-      "vae": [
-        "257:235",
-        0
-      ]
-    },
-    "class_type": "VAEDecode",
-    "_meta": {
-      "title": "VAE Decode"
-    }
-  },
   "257:322": {
     "inputs": {
       "fps": [
@@ -395,7 +399,7 @@
       ],
       "bit_depth": 8,
       "images": [
-        "257:245",
+        "100",
         0
       ]
     },

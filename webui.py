@@ -12,6 +12,7 @@ from core.image2vid import Wan2VideoPipelineClient
 from core.img2img import FluxImg2ImgClient
 from core.metadata_parser import extract_comfyui_metadata
 from core.img2vid_ltx import LTXVideoClient
+from core.video_interp import VideoInterpClient
 
 warnings.filterwarnings("ignore", message=".*HTTP_422_UNPROCESSABLE_ENTITY.*")
 warnings.filterwarnings("ignore", category=DeprecationWarning)
@@ -59,15 +60,17 @@ def open_output_folder(mode:str):
             if mode == "t2i":
                 output_path = COMFYUI_OUTPUT_DIR + r"\txt2img"
             elif mode == "i2i":
-                output_path = COMFYUI_OUTPUT_DIR + r"img2img"
+                output_path = COMFYUI_OUTPUT_DIR + r"\img2img"
             elif mode == "i2v":
-                output_path = COMFYUI_OUTPUT_DIR + r"img2vid"
+                output_path = COMFYUI_OUTPUT_DIR + r"\img2vid"
             elif mode == "mmaudio":
                 output_path = r"backend_comfyui\models\mmaudio"
             elif mode == "lora":
                 output_path = r"backend_comfyui\models\loras"
             elif mode == "model":
                 output_path = r"backend_comfyui\models\diffusion_models"
+            elif mode == "interp":
+                output_path = COMFYUI_OUTPUT_DIR + r"\highfps_fixed"
         else:
             output_path = COMFYUI_OUTPUT_DIR
 
@@ -318,6 +321,24 @@ def generate_ltx_wrapper(mode, image_path, prompt, width, height, duration, fps,
     except Exception as e:
         raise gr.Error(str(e))
 
+# ----- Video Interpolation (插帧) 桥接函数 -----
+def generate_interp_wrapper(video_path, multiplier):
+    try:
+        if not video_path:
+            raise gr.Error("❌ 请先上传或发送一个需要插帧的视频！")
+
+        gr.Info(f"🚀 正在启动视频插帧任务 (倍率: {multiplier}x)...\n它将完美保留原视频的音轨！")
+
+        client = VideoInterpClient()
+        result_video = client.generate_interpolation(
+            template_path="core/workflows/highfps_fix.json",
+            input_video_path=video_path,
+            multiplier=multiplier
+        )
+        return result_video
+    except Exception as e:
+        raise gr.Error(str(e))
+
 
 # ==========================================
 # 3. 构建现代风格 Gradio 网页界面
@@ -337,7 +358,7 @@ custom_css = """
 .swap-btn:hover { background: rgba(100, 100, 100, 0.2) !important; }
 """
 
-with gr.Blocks(theme=theme, css=custom_css, title="LiteUI Studio") as demo:
+with (gr.Blocks(theme=theme, css=custom_css, title="LiteUI Studio") as demo):
     gr.Markdown("# 🚀 LiteUI Studio")
     gr.Markdown("基于 ComfyUI API 后端的轻量化AI工作流。")
     lora_choices = get_lora_list()
@@ -396,7 +417,7 @@ with gr.Blocks(theme=theme, css=custom_css, title="LiteUI Studio") as demo:
                         t2i_lora_open_folder_btn = gr.Button("📂 打开LoRA文件夹 (Open Folder)", size="lg")
 
                     gr.Markdown(
-                        "<span style='color: gray; font-size: 0.9em;'>⏱️ <b>耗时预估</b>：单张 1024x1024 图片平均耗时 <b>30秒</b>。</span>")
+                        "<span style='color: gray; font-size: 0.9em;'>⏱️ <b>耗时预估</b>：RTX 5060显卡 单张 1024x1024 图片平均耗时 <b>30秒</b>。</span>")
                     t2i_btn = gr.Button("🚀 生成图像 (Generate Image)", variant="primary", size="lg")
                     t2i_stop_btn = gr.Button("🛑 打断", variant="stop", size="lg", scale=1)
 
@@ -430,10 +451,10 @@ with gr.Blocks(theme=theme, css=custom_css, title="LiteUI Studio") as demo:
 
                     with gr.Accordion("🛠️ 基础参数", open=True):
                         with gr.Row():
-                            i2i_width = gr.Slider(label="Width (宽)", minimum=512, maximum=2048, step=16, value=1008,
+                            i2i_width = gr.Slider(label="Width (宽)", minimum=512, maximum=2048, step=16, value=1024,
                                                   scale=10)
                             i2i_swap_btn = gr.Button("🔄", elem_classes="swap-btn", scale=1)
-                            i2i_height = gr.Slider(label="Height (高)", minimum=512, maximum=2048, step=16, value=1920,
+                            i2i_height = gr.Slider(label="Height (高)", minimum=512, maximum=2048, step=16, value=1024,
                                                    scale=10)
                         with gr.Row():
                             i2i_steps = gr.Slider(label="步数", minimum=1, maximum=20, step=1, value=4)
@@ -459,7 +480,7 @@ with gr.Blocks(theme=theme, css=custom_css, title="LiteUI Studio") as demo:
                         i2i_lora_open_folder_btn = gr.Button("📂 打开LoRA文件夹 (Open Folder)", size="lg")
 
                     gr.Markdown(
-                        "<span style='color: gray; font-size: 0.9em;'>⏱️ <b>耗时预估</b>：单张图片平均耗时 <b>60秒</b>。</span>")
+                        "<span style='color: gray; font-size: 0.9em;'>⏱️ <b>耗时预估</b>：RTX 5060显卡 单张图片平均耗时 <b>60秒</b>。</span>")
                     i2i_btn = gr.Button("🚀 生成图像 (Generate Img2Img)", variant="primary", size="lg")
                     i2i_stop_btn = gr.Button("🛑 打断", variant="stop", size="lg", scale=1)
 
@@ -643,7 +664,41 @@ with gr.Blocks(theme=theme, css=custom_css, title="LiteUI Studio") as demo:
                 with gr.Column(scale=5):
                     ltx_output_vid = gr.Video(label="生成的声像画同轨视频 (Result)", width=800,height=600,interactive=False)
                     ltx_output_seed = gr.Number(label="Seed", interactive=False)
+                    ltx_send_to_interp_btn = gr.Button("📤 一键发送至插帧提帧", size="lg", scale=2)
                     ltx_open_folder_btn = gr.Button("📂 打开本地输出文件夹 (Open Folder)", size="lg")
+
+        # ==========================================
+        # TAB: 视频插帧 (Video Interpolation)
+        # ==========================================
+        with gr.Tab("🎞️ 视频插帧 (Video Interpolation)", id="tab_interp"):
+            with gr.Row():
+                with gr.Column(scale=4):
+                    # 视频输入组件，允许用户直接拖拽或从其他页面传过来
+                    interp_input_vid = gr.Video(label="Input Video (原始视频)", sources=["upload"],height=256,)
+
+                    with gr.Accordion("⚙️ 插帧参数", open=True):
+                        # 倍率滑块，step=1 强制为整数
+                        interp_multiplier = gr.Slider(
+                            label="Multiplier (插帧倍率)",
+                            minimum=2, maximum=8, step=1, value=2,
+                            info="将视频帧率提升 N 倍 (推荐 2 或 4)。音轨会自动保留。"
+                        )
+
+                    with gr.Row():
+                        interp_btn = gr.Button("🚀 提升帧率 (Interpolate)", variant="primary", size="lg",
+                                               scale=4)
+                        interp_stop_btn = gr.Button("🛑 打断", variant="stop", size="lg", scale=1)
+
+                    gr.HTML("""
+                            <div style='background-color: rgba(11, 158, 245, 0.15); border: 1px solid rgba(11, 158, 245, 0.3); padding: 12px; border-radius: 6px; margin-bottom: 10px; line-height: 1.6;'>
+                                
+                                <span style='color: var(--body-text-color); font-size: 0.9em;'>ℹ️ 如果在后台看到大量的"Comfy-VFI: Clearing cache... Done cache clearing"，属于正常现象。</span>
+                            </div>
+                            """)
+
+                with gr.Column(scale=5):
+                    interp_output_vid = gr.Video(label="高帧率视频 (Result)", width=800,height=600,interactive=False)
+                    interp_open_folder_btn = gr.Button("📂 打开本地输出文件夹 (Open Folder)", size="lg")
 
         with gr.Tab("🔍 Metadata读取器 (Metadata Inspector)", id="tab_inspector"):
             gr.Markdown("把你在 ComfyUI 或当前工作台生成的**原图或原视频**拖拽到下方，即可瞬间提取它的祖传配方！")
@@ -702,6 +757,8 @@ with gr.Blocks(theme=theme, css=custom_css, title="LiteUI Studio") as demo:
     i2v_open_folder_btn.click(fn=lambda:open_output_folder(mode="i2v"), inputs=None, outputs=None)
     i2i_open_folder_btn.click(fn=lambda:open_output_folder(mode="i2i"), inputs=None, outputs=None)
     mi_open_folder_btn.click(fn=lambda:open_output_folder(mode=""), inputs=None, outputs=None)
+    ltx_open_folder_btn.click(fn=lambda:open_output_folder(mode=""), inputs=None, outputs=None)
+    interp_open_folder_btn.click(fn=lambda:open_output_folder(mode="interp"), inputs=None, outputs=None)
 
     t2i_model_open_folder_btn.click(fn=lambda: open_output_folder(mode="model"), inputs=None, outputs=None)
     i2i_model_open_folder_btn.click(fn=lambda: open_output_folder(mode="model"), inputs=None, outputs=None)
@@ -739,9 +796,9 @@ with gr.Blocks(theme=theme, css=custom_css, title="LiteUI Studio") as demo:
         return img
 
 
-    def jump_to_i2v_tab():
+    def jump_to_ltx_tab():
         """动作 2：纯粹负责触发前端标签页跳转"""
-        return gr.update(selected="tab_i2v")
+        return gr.update(selected="tab_ltx")
 
     def jump_to_i2i_tab():
         """动作 2：纯粹负责触发前端标签页跳转"""
@@ -762,7 +819,11 @@ with gr.Blocks(theme=theme, css=custom_css, title="LiteUI Studio") as demo:
         inputs=[t2i_output_img],
         outputs=[i2v_image]
     ).then(
-        fn=jump_to_i2v_tab,
+        fn=verify_and_pass_img,
+        inputs=[t2i_output_img],
+        outputs=[ltx_image]
+    ).then(
+        fn=jump_to_ltx_tab,
         inputs=None,
         outputs=[main_tabs]
     )
@@ -788,7 +849,11 @@ with gr.Blocks(theme=theme, css=custom_css, title="LiteUI Studio") as demo:
         inputs=[i2i_output_img],
         outputs=[i2v_image]
     ).then(
-        fn=jump_to_i2v_tab,
+        fn=verify_and_pass_img,
+        inputs=[i2i_output_img],
+        outputs=[ltx_image]
+    ).then(
+        fn=jump_to_ltx_tab,
         inputs=None,
         outputs=[main_tabs]
     )
@@ -833,10 +898,38 @@ with gr.Blocks(theme=theme, css=custom_css, title="LiteUI Studio") as demo:
         outputs=[ltx_output_vid, ltx_output_seed]
     )
 
-    # 文件夹唤醒
-    ltx_open_folder_btn.click(fn=open_output_folder, inputs=None, outputs=None)
+    # ==========================================
+    # 跨页面流转：发送至插帧页面
+    # ==========================================
+    def verify_and_pass_vid(vid):
+        if vid is None:
+            raise gr.Error("❌ 请先生成一个视频！")
+        return vid
 
-    # --- Tab 5 事件 ---
+    def jump_to_interp_tab():
+        return gr.update(selected="tab_interp")
+
+    # 假设你给 LTX 或 Wan2.2 的发送按钮命名为 send_to_interp_btn
+    ltx_send_to_interp_btn.click(
+        fn=verify_and_pass_vid,
+        inputs=[ltx_output_vid],  # 或者是 ltx_output_vid
+        outputs=[interp_input_vid]
+    ).then(
+        fn=jump_to_interp_tab,
+        inputs=None,
+        outputs=[main_tabs]
+    )
+
+    # --- 视频插帧 事件 ---
+    interp_btn.click(
+        fn=generate_interp_wrapper,
+        inputs=[interp_input_vid, interp_multiplier],
+        outputs=[interp_output_vid]
+    )
+    interp_stop_btn.click(fn=interrupt_comfyui_task, inputs=None, outputs=None)
+
+
+    # --- Tab 6 事件 ---
     def parse_metadata_wrapper(file_path):
         if not file_path:
             return "*等待上传文件中...*"

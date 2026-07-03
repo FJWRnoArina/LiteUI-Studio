@@ -42,7 +42,7 @@ def main():
 
     # 2. 轮询等待 8188 端口亮起
     print("⏳ 等待 AI 引擎热机 ...")
-    timeout = 180
+    timeout = 3600
     start_time = time.time()
     while not is_port_in_use(8188):
         time.sleep(1)

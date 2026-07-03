@@ -12,22 +12,6 @@
       "title": "CLIP Text Encode (Prompt)"
     }
   },
-  "8": {
-    "inputs": {
-      "samples": [
-        "34",
-        0
-      ],
-      "vae": [
-        "15",
-        0
-      ]
-    },
-    "class_type": "VAEDecode",
-    "_meta": {
-      "title": "VAE Decode"
-    }
-  },
   "9": {
     "inputs": {
       "filename_prefix": "txt2img/ComfyUI",
@@ -187,7 +171,7 @@
       "upscale_method": "nearest-exact",
       "scale_by": 2,
       "image": [
-        "8",
+        "45",
         0
       ]
     },
@@ -224,6 +208,26 @@
     "class_type": "Power Lora Loader (rgthree)",
     "_meta": {
       "title": "Power Lora Loader (rgthree)"
+    }
+  },
+  "45": {
+    "inputs": {
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8,
+      "samples": [
+        "34",
+        0
+      ],
+      "vae": [
+        "15",
+        0
+      ]
+    },
+    "class_type": "VAEDecodeTiled",
+    "_meta": {
+      "title": "VAE Decode (Tiled)"
     }
   }
 }

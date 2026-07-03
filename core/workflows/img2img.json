@@ -28,27 +28,11 @@
       "title": "Load VAE"
     }
   },
-  "4": {
-    "inputs": {
-      "samples": [
-        "10:34",
-        0
-      ],
-      "vae": [
-        "3",
-        0
-      ]
-    },
-    "class_type": "VAEDecode",
-    "_meta": {
-      "title": "VAE Decode"
-    }
-  },
   "5": {
     "inputs": {
       "filename_prefix": "img2img/ComfyUI",
       "images": [
-        "4",
+        "45",
         0
       ]
     },
@@ -127,22 +111,6 @@
       "title": "FluxGuidance"
     }
   },
-  "15": {
-    "inputs": {
-      "pixels": [
-        "16",
-        0
-      ],
-      "vae": [
-        "3",
-        0
-      ]
-    },
-    "class_type": "VAEEncode",
-    "_meta": {
-      "title": "VAE Encode"
-    }
-  },
   "16": {
     "inputs": {
       "upscale_method": "nearest-exact",
@@ -165,7 +133,7 @@
         0
       ],
       "latent": [
-        "15",
+        "46",
         0
       ]
     },
@@ -181,8 +149,23 @@
       },
       "lora_1": {
         "on": false,
-        "lora": "",
+        "lora": "SEXGOD_Blowjobs_Klein9b_v1.safetensors",
         "strength": 0
+      },
+      "lora_2": {
+        "on": false,
+        "lora": "klein_snofs_v1_4.safetensors",
+        "strength": 0.5
+      },
+      "lora_3": {
+        "on": false,
+        "lora": "lenovo_flux_klein9b.safetensors",
+        "strength": 1
+      },
+      "lora_4": {
+        "on": false,
+        "lora": "footjob_ab_f2k9b_1.safetensors",
+        "strength": 0.85
       },
       "➕ Add Lora": "",
       "model": [
@@ -199,6 +182,46 @@
       "title": "Power Lora Loader (rgthree)"
     }
   },
+  "45": {
+    "inputs": {
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8,
+      "samples": [
+        "10:34",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    },
+    "class_type": "VAEDecodeTiled",
+    "_meta": {
+      "title": "VAE Decode (Tiled)"
+    }
+  },
+  "46": {
+    "inputs": {
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8,
+      "pixels": [
+        "16",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    },
+    "class_type": "VAEEncodeTiled",
+    "_meta": {
+      "title": "VAE Encode (Tiled)"
+    }
+  },
   "10:32": {
     "inputs": {
       "sampler_name": "euler"
@@ -206,22 +229,6 @@
     "class_type": "KSamplerSelect",
     "_meta": {
       "title": "KSamplerSelect"
-    }
-  },
-  "10:30": {
-    "inputs": {
-      "model": [
-        "42",
-        0
-      ],
-      "conditioning": [
-        "17",
-        0
-      ]
-    },
-    "class_type": "BasicGuider",
-    "_meta": {
-      "title": "BasicGuider"
     }
   },
   "10:31": {
@@ -248,6 +255,22 @@
     "class_type": "Flux2Scheduler",
     "_meta": {
       "title": "Flux2Scheduler"
+    }
+  },
+  "10:30": {
+    "inputs": {
+      "model": [
+        "42",
+        0
+      ],
+      "conditioning": [
+        "17",
+        0
+      ]
+    },
+    "class_type": "BasicGuider",
+    "_meta": {
+      "title": "Basic Guider"
     }
   },
   "10:34": {

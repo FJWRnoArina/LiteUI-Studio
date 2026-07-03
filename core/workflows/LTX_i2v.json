@@ -177,8 +177,8 @@
     "inputs": {
       "tile_size": 512,
       "overlap": 64,
-      "temporal_size": 4096,
-      "temporal_overlap": 8,
+      "temporal_size": 64,
+      "temporal_overlap": 16,
       "samples": [
         "45",
         0
@@ -212,7 +212,7 @@
   "48": {
     "inputs": {
       "frame_rate": [
-        "79",
+        "20",
         0
       ],
       "loop_count": 0,
@@ -225,7 +225,7 @@
       "pingpong": false,
       "save_output": true,
       "images": [
-        "78",
+        "46",
         0
       ],
       "audio": [
@@ -680,52 +680,6 @@
     "class_type": "LTX2_NAG",
     "_meta": {
       "title": "LTX2 NAG"
-    }
-  },
-  "78": {
-    "inputs": {
-      "ckpt_name": "rife47.pth",
-      "multiplier": [
-        "80",
-        0
-      ],
-      "scale_factor": 1,
-      "ensemble": false,
-      "clear_cache_after_n_frames": 2,
-      "frames": [
-        "46",
-        0
-      ]
-    },
-    "class_type": "RIFE_VFI_Opt",
-    "_meta": {
-      "title": "🐇 RIFE VFI Interpolate by Multiple"
-    }
-  },
-  "79": {
-    "inputs": {
-      "expression": "a * b",
-      "values.a": [
-        "20",
-        0
-      ],
-      "values.b": [
-        "80",
-        0
-      ]
-    },
-    "class_type": "ComfyMathExpression",
-    "_meta": {
-      "title": "Math Expression"
-    }
-  },
-  "80": {
-    "inputs": {
-      "value": 3
-    },
-    "class_type": "PrimitiveInt",
-    "_meta": {
-      "title": "Interpolation Multiplier"
     }
   }
 }

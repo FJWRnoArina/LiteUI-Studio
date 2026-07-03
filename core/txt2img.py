@@ -99,7 +99,7 @@ class t2iClient:
         prompt_id = self._queue_prompt(workflow)['prompt_id']
         print(f"[*] 任务已提交，开始生成 (Prompt ID: {prompt_id})...")
 
-        gr.Info(f"🚀 图片生成任务已提交后台！\n单张图片预估耗时30~60秒，去喝杯咖啡吧☕")
+        gr.Info(f"🚀 图片生成任务已提交后台！\n去喝杯咖啡吧☕")
 
         try:
             try:
