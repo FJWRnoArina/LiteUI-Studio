@@ -23,10 +23,24 @@ LiteUI Studio is an out-of-the-box, standalone local AI audio-visual creation wo
 
 ## 💻 Hardware Requirements
 
-- **Disk Usage**: 88 GB disk space (including 77.5 GB model files)
-- **OS**: Windows 10 / 11
-- **GPU**: **NVIDIA** GPU with 8GB VRAM (Highly recommend consumer sweet-spot cards like RTX 4060 / 3060). If using 6B VRAM, carefully choose your parameters.
-- **RAM**: 16~32GB Recommended (Since large model offloading requires system RAM, setting up at least 20GB of Windows Virtual Memory/Pagefile is recommended).
+- **Disk Space**: 88 GB (including about 75 GB of pre-installed model files)
+- **Operating System**: Windows 10 / 11
+- **Graphics Card**: NVIDIA GPU, **$\ge$ 6GB VRAM required in minimum** (8GB VRAM or more is recommended, such as RTX 4060 / 3060). 6GB VRAM must be used after reasonably adjusting parameters, and the time taken will increase significantly compared to 8GB VRAM.
+- **Memory**: 16~32GB recommended (since large model swapping consumes system memory, it is recommended to enable at least 20GB of Windows virtual memory). If VRAM is low, please use after reasonably adjusting the generation parameters.
+
+---
+
+## 📊 Performance Benchmarks
+
+
+| Generation Task | Resolution & Duration | RTX 5060 (8GB) | RTX 2060 (6GB) |
+| :--- | :--- | :--- | :--- |
+| **Flux2 Text-to-Image** | 1024x1024 | ~30s | ~250s |
+| **Flux2 Image-to-Image** | 1024x1024 | ~45s | ~450s |
+| **LTX-2.3 Video Generation** | 512x768, 10s (24fps)| ~300s | ~3800s |
+
+*💡 **Note**: Under 6GB VRAM, the VAE encoding/decoding time far exceeds the sampling process. For example, in the 250s Image-to-Image test, only 21s is used for sampling, while the rest of the time is entirely spent on CPU Offload and VAE decoding.*
+*During the 3800s wait on the RTX 2060, base sampling accounts for only 420s, while Latent Upscale takes as much as 2130s, and VAE decoding takes an estimated 1000s.*
 
 ---
 
