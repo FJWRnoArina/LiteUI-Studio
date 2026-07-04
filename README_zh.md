@@ -6,6 +6,7 @@
 # 🚀 LiteUI Studio
 
 **完整版下载链接（74.98 GB）：https://pan.baidu.com/s/1lJ3WSWmI-Zbt7jaSvYEyLA?pwd=gxyt**
+
 **精简版（6GB)：见下文**
 
 LiteUI Studio 是一个开箱即用、完全独立的本地 AI 视听创作工作站。它以极其硬核的底层显存调度机制，将庞杂的节点式连线（ComfyUI）封装成了对人类直觉最友好的现代化交互界面。无需折腾复杂的代码环境，只需双击运行，即可在本地流畅驱动目前全球最前沿的图像与视频生成模型。
