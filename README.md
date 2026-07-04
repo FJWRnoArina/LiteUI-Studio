@@ -59,7 +59,7 @@ Core Edition (3.64 GB): See below
 
 > [!TIP]
 > <details>
-> <summary><b> If you want to use Core Edition（3.64GB，when you already have ComfyUI）</b></summary>
+> <summary><b> If you want to use Core Edition（3.64GB，recommended when you already have ComfyUI）</b></summary>
 >   
 > - 1.Download all files in the project（by 'git clone'，or Click 'Code -> Download ZIP' then unzip).
 > - 2.Download Python environment from the full download link [python.zip](https://pan.baidu.com/s/1lJ3WSWmI-Zbt7jaSvYEyLA?pwd=gxyt)（~6GB), then unzip to the root directory.<b>Ensure a folder named 'python' is shown, and 'python.exe' can be seen after opening (instead of a secondary folder).</b>
