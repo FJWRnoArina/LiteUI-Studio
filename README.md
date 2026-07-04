@@ -72,6 +72,9 @@ Core Edition (3.64 GB): See below
 >     
 >   ```text
 >   LiteUI-Studio/
+>     └─ python/
+>          └─ python.exe  <-- Python Environment
+>     └─ core/
 >     └─ backend_comfyui/
 >          └─ models/
 >               ├─ clip/      
