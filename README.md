@@ -9,6 +9,8 @@ Full Download Link: to be uploaded
 
 LiteUI Studio is an out-of-the-box, standalone local AI audio-visual creation workstation, **available for 6G/8G VRAM**. It encapsulates complex node-based workflows (ComfyUI) into an intuitive, modern UI, backed by hardcore VRAM scheduling mechanisms. No need to mess with complex coding environments—just double-click and smoothly run the world's most cutting-edge image and video generation models locally.
 
+<img src="https://github.com/FJWRnoArina/LiteUI-Studio/blob/main/preview.png?raw=true" width="800">
+
 ---
 
 ## ✨ Core Features
