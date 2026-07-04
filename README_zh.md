@@ -5,7 +5,7 @@
 
 # 🚀 LiteUI Studio
 
-**完整版下载链接（74.98 GB）：https://pan.baidu.com/s/1lJ3WSWmI-Zbt7jaSvYEyLA?pwd=gxyt**
+**完整版下载链接（75.0 GB）：https://pan.baidu.com/s/1lJ3WSWmI-Zbt7jaSvYEyLA?pwd=gxyt**
 
 **精简版（3.64GB)：见下文**
 
