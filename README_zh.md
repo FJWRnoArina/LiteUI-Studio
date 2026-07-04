@@ -191,6 +191,7 @@ LiteUI Studio 是一个**6G/8G显存可用、开箱即用、完全独立**的本
 - [unsloth/FLUX.2-klein-9B-gguf](https://huggingface.co/unsloth/FLUX.2-klein-9B-GGUF)
 - [QuantStack/Wan2.2-I2V-A14B-GGUF](https://huggingface.co/QuantStack/Wan2.2-I2V-A14B-GGUF)
 - [unsloth/LTX-2.3-GGUF](https://huggingface.co/unsloth/LTX-2.3-GGUF/tree/main)
+- [hkchengrex/MMAudio](https://huggingface.co/hkchengrex/MMAudio)
 
  ---
 
