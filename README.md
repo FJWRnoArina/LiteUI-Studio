@@ -159,7 +159,12 @@ Core Edition (3.64 GB): See below
 
 **Q: I encountered Out Of Memory.**
 > A: Please read the following checklist:
->  - 1. 
+>  - 1. Your device's graphic card has at least 6G VRAM 
+>  - 2. If you are using custom models, make sure their sizes are not too large, and are GGUF quantized (e.g. Q4_K_M).
+>  - 3. Do not load too many LoRAs.
+>  - 4. Use a smaller resolution ( width x height).
+>  - 5. When generating video, use a smaller value of duration or FPS.
+>  - 6. Allocate enough Virtual Memory as CPU offload is involved.
 
 **Q: LiteUI-Studio cannot load the model I provided.**
 > A: LiteUI-Studio currently only supports the GGUF quantized versions of three models: FLUX.2-klein-9B, Wan2.2-I2V-A14B, and LTX-2.3 (along with their finetuned variants). These are the best quality models currently available (as of July 2026) that can run locally with limited VRAM. If you need to use other models, please download and use SD-webui or ComfyUI.
