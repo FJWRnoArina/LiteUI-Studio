@@ -53,7 +53,7 @@ Core Edition (3.64 GB): See below
 
 ## 🛠️ Getting Started
 
-### 1. 85GB Full Version One-Click Launch
+### 1. Full Edition One-Click Launch
 - Double-click **`start.bat`** in the root directory.
 - Grab a coffee and wait for the terminal to display "Engine started successfully". The modern web console will pop up automatically in your browser!
 
