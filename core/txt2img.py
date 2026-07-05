@@ -171,35 +171,3 @@ class t2iClient:
         except Exception as e:
             print(f"[!] 显存洗地请求网络出错: {e}")
 
-
-# ==========================================
-# 优雅的调用方式测试
-# ==========================================
-if __name__ == "__main__":
-    comfy = t2iClient()
-
-    # 构建用户想用的 LoRA 列表 (你可以在这里加任意多个，不想用就传 [])
-    my_loras = [
-        # {"name": "lenovo_flux_klein9b.safetensors", "strength": 1.0},
-        # {"name": "klein_snofs_v1_4.safetensors", "strength": 0.6}  # 第二个画风稍微弱一点
-    ]
-
-    # 调用变得极其简洁！你只需把想要覆盖的参数作为 key=value 传进去
-    result_img = comfy.generate_txt2img(
-        template_path="workflows/txt2img.json",
-        lora_list=my_loras,
-
-        # 以下参数因为在 PARAM_MAP 注册过，会自动被替换！
-        prompt="a cyberpunk cat reading a physics book, neon lights, 4k",
-        upscale_factor=2,
-        seed=88888888,
-        width=1008,
-        height=1008,
-        batch_size=1,
-        steps=5
-    )
-
-    if result_img:
-        result_img[0].show()
-        for img in result_img:
-            img.save("output/flux2_img.png")
