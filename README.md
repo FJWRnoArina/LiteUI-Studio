@@ -62,7 +62,7 @@ Core Edition (3.64 GB): See below
 > <summary><b> If you want to use Core Edition（3.64GB，recommended when you already have ComfyUI）</b></summary>
 >   
 > - 1.Download all files in the project（by 'git clone', or Click 'Code -> Download ZIP' then unzip).
-> - 2.Download Python environment from the full download link [python.zip](https://pan.baidu.com/s/1lJ3WSWmI-Zbt7jaSvYEyLA?pwd=gxyt)（~6GB), then unzip to the root directory. <b>Ensure a folder named 'python' is shown, and 'python.exe' can be seen after opening (instead of a secondary folder).</b>
+> - 2.Download Python environment from the full download link [python.zip](https://huggingface.co/datasets/womamama/LiteUI-Studio/tree/main)（~6GB), then unzip to the root directory. <b>Ensure a folder named 'python' is shown, and 'python.exe' can be seen after opening (instead of a secondary folder).</b>
 > - 3.Download [ffmpeg](https://www.gyan.dev/ffmpeg/builds/), choose essentials.7z，Unzip 'ffmpeg.exe' and 'ffprobe.exe', and place them to the root directory.
 > - 4.Copy your ComfyUI folder (with 'main.py' inside) to the root directory, <b>and rename the folder to 'backend_comfyui'</b>
 >   You can also download [Windows portable ComfyUI](https://docs.comfy.org/installation/comfyui_portable_windows), unzip to root directory，and rename it to 'backend_comfyui'。
