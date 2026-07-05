@@ -260,7 +260,7 @@ def format_parsed_metadata(prompt):
         md += "- **LoRA Loaded:**\n"
         for l in loras: md += f"  - `{l}`\n"
     else:
-        md += "- **LoRA Loaded:** `无`\n\n"
+        md += "- **LoRA Loaded:** `None`\n\n"
 
     # 渲染提示词
     md += "\n#### ✨ Prompts\n"
