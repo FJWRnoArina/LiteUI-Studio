@@ -161,16 +161,3 @@ class VideoInterpClient:
         finally:
             ws.close()
             self.free_vram()
-
-
-# 测试用例
-if __name__ == "__main__":
-    client = VideoInterpClient()
-    # 填入一个测试用的 mp4 绝对或相对路径
-    test_video = "test_output.mp4"
-    if os.path.exists(test_video):
-        try:
-            result = client.generate_interpolation("workflows/highfps_fix.json", test_video, multiplier=2)
-            print("测试成功！")
-        except Exception as e:
-            print(f"测试失败: {e}")
