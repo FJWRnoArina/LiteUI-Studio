@@ -92,7 +92,7 @@
   },
   "15": {
     "inputs": {
-      "text": "A cat looks towards the camera.\n\n0-1 seconds : the cat meows\n\n1-5 seconds: the cat starts running and enters the kitchen\n\n5-10 seconds: the cat finds a cake and eats the cake\n\nStyle: \nWes Anderson style, rigid, centered symmetry, pastel color palette, whimsical, nostalgic aesthetic.",
+      "text": "",
       "clip": [
         "23",
         0
