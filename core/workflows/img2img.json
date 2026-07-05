@@ -149,22 +149,22 @@
       },
       "lora_1": {
         "on": false,
-        "lora": "SEXGOD_Blowjobs_Klein9b_v1.safetensors",
+        "lora": "",
         "strength": 0
       },
       "lora_2": {
         "on": false,
-        "lora": "klein_snofs_v1_4.safetensors",
+        "lora": "",
         "strength": 0.5
       },
       "lora_3": {
         "on": false,
-        "lora": "lenovo_flux_klein9b.safetensors",
+        "lora": "",
         "strength": 1
       },
       "lora_4": {
         "on": false,
-        "lora": "footjob_ab_f2k9b_1.safetensors",
+        "lora": "",
         "strength": 0.85
       },
       "➕ Add Lora": "",
