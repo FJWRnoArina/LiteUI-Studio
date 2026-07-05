@@ -170,22 +170,3 @@ class FluxImg2ImgClient:
 
         except Exception as e:
             print(f"[!] 显存洗地请求网络出错: {e}")
-
-
-# 测试代码
-if __name__ == "__main__":
-    client = FluxImg2ImgClient()
-    # 请确保同目录下有 test_cat.png
-    try:
-        img = client.generate_img2img(
-            template_path="workflows/img2img.json",
-            input_image_path=r"D:\ComfyUI-aki\ComfyUI-aki-v3\ComfyUI-aki-v3\ComfyUI\output\ComfyUI_00348_.png",
-            prompt="cyberpunk style, neon lights",
-            seed=12345
-        )
-        if img:
-            img.show()
-            img.save("img2img_test_output.png")
-            print("图生图测试成功！已保存。")
-    except Exception as e:
-        print(f"测试失败: {e}")
