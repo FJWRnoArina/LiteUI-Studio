@@ -204,6 +204,14 @@ LiteUI Studio 是一个**6G/8G显存可用、开箱即用、完全独立**的本
 
  ---
 
+ ## 🧑‍🔬 关于 FJWRnoArina (我)
+
+I am a junior honour undergraduate physics student in University of Edinburgh. This is my first summer coding project, and I came up with this idea as I found it difficult learning to familiarize and connect nodes in ComfyUI, and often suffered from Out Of Memory. Though now I can simply build up a workflow and find optimized setting for my 8G VRAM laptop, and there are many other open source projects that are probably superior to this one, I do think a simple webui for low VRAM users is worth developing. 
+
+Since I am not a professional developer and utilized AI coding assistant to accelerate development of this project, my code contains many non-standard practices, and I may have overlooked potential bugs. This project may be maintained from time to time, and please forgive if you find bugs that are not fixed in time :) .
+
+---
+
 ## ⚖️ 免责声明 (Disclaimer)
 
 1. **学术与交流目的**：本项目（LiteUI Studio）及其相关的代码、启动脚本、包装架构，仅供个人学习、学术研究与技术交流使用，**严禁用于任何商业用途**。
