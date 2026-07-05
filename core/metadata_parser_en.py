@@ -248,7 +248,7 @@ def format_parsed_metadata(prompt):
     elif wf_type == "ltx_video":
         md += f"- **🔄 Mode:** `{data.get('mode')}`\n"
         md += f"- **📏 Resolution:** `{data.get('width')} x {data.get('height')}`\n"
-        md += f"- **⏱️ Duration:** `{data.get('duration')} 秒`\n"
+        md += f"- **⏱️ Duration:** `{data.get('duration')}s`\n"
         md += f"- **🎞️ FPS:** `{data.get('fps')} fps`\n"
         md += f"- **🎲 Base Seed:** `{data.get('seed_1')}`\n"
         md += f"- **🎲 Upscale Seed:** `{data.get('seed_2')}`\n"
