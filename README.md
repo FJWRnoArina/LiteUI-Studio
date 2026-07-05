@@ -54,6 +54,7 @@ Core Edition (3.64 GB): See below
 ## 🛠️ Getting Started
 
 ### 1. Full Edition One-Click Launch
+Full Download Link (75.0 GB): https://huggingface.co/datasets/womamama/LiteUI-Studio/tree/main
 - Unzip all files (for English UI, **unzip 'en_US.zip'** to root directory as well).
 - Double-click **`start_en.bat`** in the root directory ('start.bat' for Chinese UI).
 - Grab a coffee and wait for the terminal to display "Engine started successfully". The modern web console will pop up automatically in your browser!
