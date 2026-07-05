@@ -210,7 +210,7 @@ All Models used：
 
 I am a junior honour undergraduate physics student in University of Edinburgh. This is my first summer coding project, and I came up with this idea as I found it difficult learning to familiarize and connect nodes in ComfyUI, and often suffered from Out Of Memory. Though now I can simply build up a workflow and find optimized setting for my 8G VRAM laptop, and there are many other open source projects that are probably superior to this one, I do think a simple webui for low VRAM users is worth developing. 
 
-Since I am not a professional developer and utilized AI coding assistant to accelerate development of this project (it took about one week), my code contains many non-standard practices, and I may have overlooked potential bugs. This project may be maintained from time to time, and please forgive if you find bugs that are not fixed in time :) .
+Since I am not a professional developer and utilized AI coding assistant to accelerate development of this project, my code contains many non-standard practices, and I may have overlooked potential bugs. Bug reports and suggestions are always welcome, and I'll do my best to maintain the project whenever time allows, but please forgive if you find bugs that are not fixed in time :) .
 
 ---
 
