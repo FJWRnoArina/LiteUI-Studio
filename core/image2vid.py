@@ -287,28 +287,3 @@ class Wan2VideoPipelineClient:
 
         # 直接把物理路径返回给 WebUI
         return final_physical_path
-
-
-if __name__ == "__main__":
-    time1 = time.time()
-    client = Wan2VideoPipelineClient()
-    # 假设有一张输入图
-    test_img = r"D:\PycharmProjects\liteUI\backend_comfyui\output\txt2img\ComfyUI_00005_.png"
-    if os.path.exists(test_img):
-        print("开始生成带配音的测试视频...")
-        client.generate_pipeline(
-            image_path=test_img,
-            output_save_path="test_audio_video.mp4",
-            video_prompt="The cat meows",
-            separate_audio=True,  # 开启独立音频提示词
-            audio_prompt="The cat meows",
-            enable_audio=True,
-            duration=3,
-            width=512,
-            height=512,
-            audio_model="mmaudio_large_44k_v2_fp16.safetensors",
-            seed=124257
-        )
-        print("生成完毕！请检查 test_audio_video.mp4")
-    time2 = time.time()
-    print("Time usage:", time2 - time1)
