@@ -203,6 +203,14 @@ All Models used：
 - [unsloth/LTX-2.3-GGUF](https://huggingface.co/unsloth/LTX-2.3-GGUF/tree/main)
 - [hkchengrex/MMAudio](https://huggingface.co/hkchengrex/MMAudio)
 
+
+---
+
+## 🧑‍🔬 About FJWRnoArina (Me)
+
+I am a junior honour undergraduate physics student in University of Edinburgh. This is my first summer coding project, and I came up with this idea as I found it difficult learning to familiarize and connect nodes in ComfyUI, and often suffered from Out Of Memory. Though now I can simply build up a workflow and find optimized setting for my 8G VRAM laptop, and there are many other open source projects that are probably superior to this one, I do think a simple webui for low VRAM users is worth developing. 
+Since I am not a professional developer and used AI coding for this project, my code contains many non-standard practices, and I may have overlooked potential bugs. This project may be maintained from time to time, and please forgive if you find bugs that are not fixed in time :) .
+
 ---
 
 ## ⚖️ Disclaimer
